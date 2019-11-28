@@ -1,0 +1,120 @@
+##### VARIABLES #####
+$event
+$privilege
+$channel
+$uniqueid
+$callerIDNum
+$callerIDName
+$connectedLineNum
+$connectedLineName
+$accountCode
+$cause
+$causetxt
+$initiator
+$subEvent
+$uniqueID
+$dialStatus
+$channelStateDesc
+$context
+$channelId
+$callId
+$sessionId
+$callerID
+$calleeID
+$realCalleeID
+$direction
+$deviceState
+$callback
+$destination
+$destUniqueID
+$dialstring
+$channelState
+$cIDCallingPres
+
+##### NAME OF COLUMNS #####
+Event
+Privilege
+Channel
+Uniqueid
+CallerIDNum
+CallerIDName
+ConnectedLineNum
+ConnectedLineName
+AccountCode
+Cause
+Causetxt
+Initiator
+SubEvent
+UniqueID
+DialStatus
+ChannelStateDesc
+Context
+ChannelId
+CallId
+SessionId
+CallerID
+CalleeID
+RealCalleeID
+Direction
+DeviceState
+Callback
+Destination
+DestUniqueID
+Dialstring
+ChannelState
+CIDCallingPres
+
+
+##### FOR DATABASE #####
+
+CREATE DATABASE parser_db;
+CREATE USER 'parser_user'@'%' IDENTIFIED BY 'parser_user_password';
+GRANT ALL PRIVILEGES ON * . * TO 'parser_user'@'%';
+FLUSH PRIVILEGES;
+USE parser_db;
+
+CREATE TABLE events (
+id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+Event varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Privilege varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Channel varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Uniqueid varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+CallerIDNum varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+CallerIDName varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+ConnectedLineNum varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+ConnectedLineName varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+AccountCode varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Cause varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Causetxt varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Initiator varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+SubEvent varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+UniqueID varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+DialStatus varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+ChannelStateDesc varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Context varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+ChannelId varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+CallId varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+SessionId varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+CallerID varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+CalleeID varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+RealCalleeID varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Direction varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+DeviceState varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Callback varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Destination varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+DestUniqueID varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+Dialstring varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+ChannelState varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+CIDCallingPres varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+SampleAddAt timestamp NOT NULL, PRIMARY KEY (id))
+ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+##### ANOTHER EXAMPLES #####
+CREATE TABLE articles ( article_id bigint(20) unsigned NOT NULL AUTO_INCREMENT, title varchar(191) COLLATE utf8_unicode_ci NOT NULL, author varchar(191) COLLATE utf8_unicode_ci NOT NULL, excerpt varchar(191) COLLATE utf8_unicode_ci NOT NULL, content text COLLATE utf8_unicode_ci NOT NULL, created_at timestamp NOT NULL, PRIMARY KEY (article_id)) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE users ( userID bigint(100) NOT NULL UNIQUE, phpsesid varchar(191) COLLATE utf8_unicode_ci NOT NULL, started_at timestamp NOT NULL, stopped_at timestamp, PRIMARY KEY (userID)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+##### GIT COMMAND EXAMPLE #####
+git remote add parser https://github.com/KhOlga/parser.git
+git push -u parser master
