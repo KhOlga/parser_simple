@@ -118,3 +118,41 @@ CREATE TABLE users ( userID bigint(100) NOT NULL UNIQUE, phpsesid varchar(191) C
 ##### GIT COMMAND EXAMPLE #####
 git remote add parser https://github.com/KhOlga/parser.git
 git push -u parser master
+
+$arrayKeysUnique = array(Event, Privilege, Channel, Uniqueid, CallerIDNum, CallerIDName,ConnectedLineNum, ConnectedLineName, AccountCode, Cause, Causetxt, Initiator, SubEvent, UniqueID, DialStatus, ChannelStateDesc, Context, ChannelId, CallId, SessionId, CallerID, CalleeID, RealCalleeID, Direction, DeviceState, Callback, Destination, DestUniqueID, Dialstring, ChannelState, CIDCallingPres);
+    
+        $data = "";
+        //print_r($eventDataArray);
+        $size = count($arrayKeysUnique);
+        for($arrayKeysUniqueKey = 0; $arrayKeysUniqueKey < $size; $arrayKeysUniqueKey++)
+        {
+        foreach($eventDataArray as $eventKey => $eventValue)
+        {
+            
+                $keyUnigue = $arrayKeysUnique[$arrayKeysUniqueKey];
+                //echo $keyUnigue;
+            
+                $dataChunk = "";
+                if($eventKey == $keyUnigue)
+                    {
+                        echo "found\n";
+                        echo $eventKey;
+                        $dataChunk = $eventValue;
+                        echo $dataChunk . "\n";
+                        break;
+                    }
+
+                $data .= "\"" . $dataChunk . "\"";
+
+                if($arrayKeysUniqueKey != $size)
+                {
+                    
+                    $data .= ",";
+                }
+            
+                
+            //$data .= "\n";
+           // echo $data;
+        }
+
+    }
