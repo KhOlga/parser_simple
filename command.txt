@@ -119,40 +119,37 @@ CREATE TABLE users ( userID bigint(100) NOT NULL UNIQUE, phpsesid varchar(191) C
 git remote add parser https://github.com/KhOlga/parser.git
 git push -u parser master
 
-$arrayKeysUnique = array(Event, Privilege, Channel, Uniqueid, CallerIDNum, CallerIDName,ConnectedLineNum, ConnectedLineName, AccountCode, Cause, Causetxt, Initiator, SubEvent, UniqueID, DialStatus, ChannelStateDesc, Context, ChannelId, CallId, SessionId, CallerID, CalleeID, RealCalleeID, Direction, DeviceState, Callback, Destination, DestUniqueID, Dialstring, ChannelState, CIDCallingPres);
-    
+foreach($multiNewArrKeVa as $someKey => $eventDataArray) {
+    echo "<pre>";
+    //var_dump($eventDataArray);
+    $arrayKeysUnique = array("Event", "Privilege", "Channel", "Uniqueid", "CallerIDNum", "CallerIDName", "ConnectedLineNum", "ConnectedLineName", "AccountCode", "Cause", "Causetxt", "Initiator", "SubEvent", "UniqueID", "DialStatus", "ChannelStateDesc", "Context", "ChannelId", "CallId", "SessionId", "CallerID", "CalleeID", "RealCalleeID", "Direction", "DeviceState", "Callback", "Destination", "DestUniqueID", "Dialstring", "ChannelState", "CIDCallingPres");
+
+    foreach ($arrayKeysUnique as $arrayKeysUniqueKey => $arrayKeysUniqueValue) {
         $data = "";
-        //print_r($eventDataArray);
-        $size = count($arrayKeysUnique);
-        for($arrayKeysUniqueKey = 0; $arrayKeysUniqueKey < $size; $arrayKeysUniqueKey++)
-        {
-        foreach($eventDataArray as $eventKey => $eventValue)
-        {
-            
-                $keyUnigue = $arrayKeysUnique[$arrayKeysUniqueKey];
-                //echo $keyUnigue;
-            
-                $dataChunk = "";
-                if($eventKey == $keyUnigue)
-                    {
-                        echo "found\n";
-                        echo $eventKey;
-                        $dataChunk = $eventValue;
-                        echo $dataChunk . "\n";
-                        break;
-                    }
 
-                $data .= "\"" . $dataChunk . "\"";
+        foreach ($eventDataArray as $eventDataArrayKey => $eventDataArrayValue) {
+            //echo "<pre>";
+            //var_dump($eventDataArrayValue);
+            //echo $eventDataArrayValue . "\n";
+            $dataChunk = "";
 
-                if($arrayKeysUniqueKey != $size)
-                {
-                    
-                    $data .= ",";
-                }
-            
-                
-            //$data .= "\n";
-           // echo $data;
+            if ($eventDataArrayKey == $arrayKeysUniqueValue) {
+                //echo " -> found\n";
+                //echo $eventDataArrayKey . " -> " . $arrayKeysUniqueValue;
+                $dataChunk = $eventDataArrayValue;
+                //echo $dataChunk . "\n";
+                break;
+            }
+
+            $data .= "\"" . $dataChunk . "\"";
+            $size = count($arrayKeysUnique);
+            if ($arrayKeysUniqueKey != $size) {
+                $data .= ",";
+            }
+
+            $data .= "\n";
+            echo $data;
         }
 
     }
+}
